@@ -29,3 +29,17 @@ const bot = mineflayer.createBot({
   auth: 'offline',
   version: false
 })
+
+bot.on('error', (err) => {
+  if (err.code === 'ECONNRESET') {
+    console.log('O servidor de Minecraft recusou a conexão. Tentando novamente em 10 segundos...');
+  } else {
+    console.error('Erro inesperado:', err);
+  }
+});
+
+// Auto-reconnect
+bot.on('end', () => {
+  console.log('Conexão encerrada. Reiniciando bot...');
+  // Aqui você deve chamar a função que cria o bot novamente
+});
