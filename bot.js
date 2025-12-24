@@ -7,6 +7,19 @@ http.createServer((req, res) => {
 
 console.log("Servidor de verificação rodando!");
 
+const axios = require('axios'); 
+
+const URL_DO_APP = "https://bitter-aurea-alekdila1-f7aebf87.koyeb.app/"; 
+
+setInterval(async () => {
+  try {
+    await axios.get(URL_DO_APP);
+    console.log("Ping de atividade enviado com sucesso!");
+  } catch (err) {
+    console.error("Erro no auto-ping:", err.message);
+  }
+}, 300000); 
+
 require('dotenv').config()
 const mineflayer = require('mineflayer')
 
