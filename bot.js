@@ -1,3 +1,12 @@
+const http = require('http');
+http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.write('Bot Online!');
+  res.end();
+}).listen(process.env.PORT || 8000); 
+
+console.log("Servidor de verificação rodando!");
+
 require('dotenv').config()
 const mineflayer = require('mineflayer')
 
